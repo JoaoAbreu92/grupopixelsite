@@ -42,9 +42,9 @@ const feedbacks: FeedbackItem[] = [
   },
   {
     id: 2,
-    name: "Juliane Silva",
+    name: "Franciele Snack",
     role: "Gerente financeiro",
-    company: "Acrilight comunicação visual",
+    company: "Coldox Frios e Embutidos Bovinos",
     content: "A estabilidade é o ponto forte. Já testamos outras ferramentas que caíam toda hora. Com o Grupopixel, temos segurança e o suporte é nota 10.",
     rating: 5,
     //photoUrl: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2070&auto=format&fit=crop", // EXEMPLO: Foto real
