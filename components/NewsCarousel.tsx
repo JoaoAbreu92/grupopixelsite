@@ -16,8 +16,8 @@ const slides = [
     id: 1,
     // EXEMPLO COM IMAGEM (Basta adicionar a URL da imagem)
     // O texto é opcional. Se remover title/description, fica apenas a imagem.
-    imageUrl: "",
-    title: "Integração com n8n",
+    imageUrl: "/images/n8n_banner.png",
+    title: "",
     description: "Agora o Floki responde seus clientes com a inteligência artificial mais avançada do mundo.",
     icon: null, // Ícone não é usado no modo imagem (opcional)
     color: "bg-gray-800" // Cor ignorada se tiver imagem
@@ -25,8 +25,8 @@ const slides = [
   {
     id: 2,
     // EXEMPLO COM TEXTO E COR SÓLIDA
-    imageUrl: "", // Deixe vazio para usar o modo Texto/Ícone
-    title: "PandaNet",
+    imageUrl: "/images/pandanet_banner.png", // Deixe vazio para usar o modo Texto/Ícone
+    title: "",
     description: "Um novo jeito de se comunicar na sua empresa",
     icon: <Smartphone size={48} className="text-brand-400" />,
     color: "bg-gray-800"
@@ -34,8 +34,8 @@ const slides = [
   {
     id: 3,
     // EXEMPLO COM TEXTO E COR SÓLIDA
-    imageUrl: "",
-    title: "HelpDesk",
+    imageUrl: "/images/helpdesk_banner.png",
+    title: "",
     description: "Abrir chamados nunca foi tão fácil.",
     icon: <Shield size={48} className="text-blue-400" />,
     color: "bg-slate-800"
