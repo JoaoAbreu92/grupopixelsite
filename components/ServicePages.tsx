@@ -18,16 +18,16 @@ export const ModernSitesPage: React.FC = () => {
       <section className="relative text-white py-24 overflow-hidden">
         {/* Imagem de Fundo */}
         <div className="absolute inset-0 z-0">
-          <img 
-            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop" 
-            alt="Tecnologia e Conectividade" 
+          <img
+            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop"
+            alt="Tecnologia e Conectividade"
             className="w-full h-full object-cover"
           />
           {/* Overlays para legibilidade */}
           <div className="absolute inset-0 bg-gray-900/70"></div>
           <div className="absolute inset-0 bg-gradient-to-r from-brand-900/90 to-brand-900/40"></div>
         </div>
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 drop-shadow-lg">
             Sites que <span className="text-brand-400">vendem por você</span>
@@ -69,6 +69,56 @@ export const ModernSitesPage: React.FC = () => {
         </div>
       </section>
 
+      {/* Portfólio de Clientes */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Quem confia na Grupopixel</h2>
+            <p className="text-lg text-gray-600">Conheça alguns dos projetos que transformamos em realidade.</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+            {/* Cliente: Coldox */}
+            <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 bg-gray-50">
+              <div className="aspect-video bg-white flex items-center justify-center relative overflow-hidden">
+                <img src="/coldox-logo.jpg" alt="Coldox Logo" className="relative z-10 w-48 h-48 object-cover rounded-full drop-shadow-lg" />
+              </div>
+              <div className="p-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">Coldox</h3>
+                <p className="text-gray-600 mb-6">Empresa especializada em frios e congelados bovinos.</p>
+                <a
+                  href="https://coldox.com.br/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center w-full py-3 px-6 bg-white border-2 border-brand-600 text-brand-600 font-bold rounded-lg hover:bg-brand-600 hover:text-white transition-all duration-300"
+                >
+                  Veja o nosso trabalho
+                </a>
+              </div>
+            </div>
+
+            {/* Cliente: Cordel com Açaí */}
+            <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 bg-gray-50">
+              <div className="aspect-video bg-white flex items-center justify-center relative overflow-hidden">
+                <img src="/cordel-logo.jpg" alt="Cordel com Açaí Logo" className="relative z-10 w-48 h-48 object-cover rounded-full drop-shadow-lg" />
+              </div>
+              <div className="p-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">Cordel com Açaí</h3>
+                <p className="text-gray-600 mb-6">Site pessoal da escritora Socorro Rebouças: cultura e poesia.</p>
+                <a
+                  href="https://cordelcomacai.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center w-full py-3 px-6 bg-white border-2 border-brand-600 text-brand-600 font-bold rounded-lg hover:bg-brand-600 hover:text-white transition-all duration-300"
+                >
+                  Veja os nosso trabalho
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Visual Tech */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-12">
@@ -97,8 +147,8 @@ export const WebAppsPage: React.FC = () => {
   const navigate = useNavigate();
   return (
     <div className="bg-white min-h-screen">
-       {/* Hero Service */}
-       <section className="bg-gray-900 text-white py-24 relative overflow-hidden">
+      {/* Hero Service */}
+      <section className="bg-gray-900 text-white py-24 relative overflow-hidden">
         {/* Fundo Sólido e Limpo */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
@@ -141,7 +191,7 @@ export const WebAppsPage: React.FC = () => {
           </div>
         </div>
       </section>
-      
+
       {/* Visual Tech Code - Limpo e sem borrões */}
       <section className="py-20 bg-gray-900 text-gray-300 font-mono text-sm">
         <div className="max-w-4xl mx-auto p-8 bg-gray-800 rounded-xl border border-gray-700 shadow-2xl">
@@ -159,8 +209,8 @@ export const WebAppsPage: React.FC = () => {
           </div>
         </div>
         <div className="text-center mt-12 max-w-2xl mx-auto px-4">
-           <h3 className="text-2xl font-sans font-bold text-white mb-4">Código Limpo e Eficiente</h3>
-           <p className="text-gray-400">Nossa equipe de engenharia garante a estabilidade do seu negócio com as melhores práticas de desenvolvimento.</p>
+          <h3 className="text-2xl font-sans font-bold text-white mb-4">Código Limpo e Eficiente</h3>
+          <p className="text-gray-400">Nossa equipe de engenharia garante a estabilidade do seu negócio com as melhores práticas de desenvolvimento.</p>
         </div>
       </section>
     </div>

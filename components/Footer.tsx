@@ -29,9 +29,9 @@ export const Footer: React.FC = () => {
   return (
     <footer className="bg-gray-900 text-gray-300 py-16 border-t border-gray-800 mt-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Grid Layout: Alterado para suportar 5 colunas em telas grandes */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">
-          
+        {/* Grid Layout: Ajustado para 4 colunas */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+
           {/* Coluna 1: Marca (Mais larga em alguns layouts, aqui padrão) */}
           <div className="lg:col-span-1">
             <div className="mb-6">
@@ -79,39 +79,7 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Coluna 5: Newsletter (NOVO) */}
-          <div className="lg:col-span-1">
-             <h4 className="text-white font-bold mb-6 text-lg">Fique Atualizado</h4>
-             <p className="text-sm text-gray-400 mb-4">
-               Receba novidades sobre tecnologia, gestão e atualizações do Floki.
-             </p>
-             
-             {subscribed ? (
-               <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-4 flex items-center gap-3 animate-in fade-in">
-                 <div className="bg-green-500 rounded-full p-1"><Check size={12} className="text-white"/></div>
-                 <span className="text-sm text-green-400 font-medium">Inscrição confirmada!</span>
-               </div>
-             ) : (
-               <form onSubmit={handleSubscribe} className="relative">
-                 <div className="flex flex-col gap-3">
-                   <input 
-                      type="email" 
-                      placeholder="Seu melhor e-mail" 
-                      required
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="w-full bg-gray-800 border border-gray-700 text-white text-sm rounded-lg px-4 py-3 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all placeholder-gray-500"
-                   />
-                   <button 
-                      type="submit" 
-                      className="w-full bg-brand-600 hover:bg-brand-700 text-white font-medium py-2.5 rounded-lg flex items-center justify-center gap-2 transition-colors text-sm group"
-                   >
-                     Inscrever-se <Send size={14} className="group-hover:translate-x-1 transition-transform"/>
-                   </button>
-                 </div>
-               </form>
-             )}
-          </div>
+          {/* Coluna 5: Newsletter removida a pedido */}
 
         </div>
 
@@ -119,7 +87,7 @@ export const Footer: React.FC = () => {
         <div className="border-t border-gray-800 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
           <p>&copy; {new Date().getFullYear()} Grupopixel Tecnologia Ltda. Todos os direitos reservados. Feito com amor ❤️</p>
           <div className="flex items-center gap-6">
-             <span className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-green-500"></div> Sistemas Operacionais</span>
+            <span className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-green-500"></div> Sistemas Operacionais</span>
           </div>
         </div>
       </div>
