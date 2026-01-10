@@ -30,7 +30,8 @@ const partnerLogos = [
   },
   {
     name: "Cordel com Açaí",
-    url: "/images/logo-cordel-com-acai.jpg"
+    url: "/images/logo-cordel-com-acai.jpg",
+    className: "rounded-full scale-125 shadow-sm" // Ajuste para cortar e arredondar
   }
 ];
 
@@ -188,7 +189,7 @@ export const Hero: React.FC = () => {
                 <img
                   src={partner.url}
                   alt={partner.name}
-                  className="h-12 md:h-20 w-auto object-contain opacity-40 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                  className={`h-12 md:h-20 w-auto object-contain opacity-40 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 ${partner.className || ''}`}
                 />
               </div>
             ))}
