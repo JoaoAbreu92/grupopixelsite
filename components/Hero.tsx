@@ -28,10 +28,10 @@ const partnerLogos = [
     name: "Empresa 3",
     url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7T9x4xHmspaahiVowqwx7cDHRf4vcoLzwG5JfGZ_vnKWj47fZwpCcPjmFoG_Ev4Kctkw&usqp=CAU" // Exemplo
   },
-  /*{
-    name: "Empresa 4",
-    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png" // Exemplo
-  }*/
+  {
+    name: "Cordel com Açaí",
+    url: "/images/logo-cordel-com-acai.jpg"
+  }
 ];
 
 export const Hero: React.FC = () => {
