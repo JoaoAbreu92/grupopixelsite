@@ -50,16 +50,16 @@ const feedbacks: FeedbackItem[] = [
     //photoUrl: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2070&auto=format&fit=crop", // EXEMPLO: Foto real
     avatarColor: "bg-purple-100 text-purple-600"
   },
-  /*{
+  {
     id: 3,
-    name: "Fernando Alencar",
-    role: "Diretor Operacional",
-    company: "Logística Express",
-    content: "A estabilidade é o ponto forte. Já testamos outras ferramentas que caíam toda hora. Com o Grupopixel, temos segurança e o suporte é nota 10.",
-    rating: 4.5,
-    photoUrl: "", // EXEMPLO: Sem foto (Usa as iniciais)
+    name: "Socorro Rebouças",
+    role: "Escritora",
+    company: "Cordel com Açaí",
+    content: "O site ficou incrível! O tema capturou perfeitamente a essência cultural do Cordel com Açaí, unindo tradição e modernidade. Estou apaixonada pelo resultado!",
+    rating: 5,
+    photoUrl: "", // PENDENTE: Verificar se o usuário quer enviar foto, por enquanto usaremos fallback
     avatarColor: "bg-orange-100 text-orange-600"
-  }*/
+  }
 ];
 
 // Configuração da Nota Geral
