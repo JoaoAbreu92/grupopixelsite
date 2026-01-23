@@ -75,7 +75,7 @@ export const NewsCarousel: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Novidades Grupopixel</h2>
 
-        <div className="relative w-full h-64 md:h-96 overflow-hidden rounded-2xl shadow-xl group bg-gray-100">
+        <div className="relative w-full h-72 md:h-[450px] lg:h-[520px] overflow-hidden rounded-2xl shadow-xl group bg-gray-100">
 
           {/* Slides */}
           {slides.map((slide, index) => (

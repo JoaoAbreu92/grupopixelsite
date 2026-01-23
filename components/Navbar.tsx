@@ -17,7 +17,7 @@ export const Navbar: React.FC = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
 
   // Estado para controlar qual modal está aberto
-  const [activeModal, setActiveModal] = useState<'pandanet' | 'helpdesk' | null>(null);
+  const [activeModal, setActiveModal] = useState<'helpdesk' | null>(null);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -46,14 +46,6 @@ export const Navbar: React.FC = () => {
 
   return (
     <>
-      {/* Modais das Aplicações */}
-      <Modal
-        isOpen={activeModal === 'pandanet'}
-        onClose={() => setActiveModal(null)}
-        title="PandaNet"
-        description="A Intranet Corporativa definitiva. Centralize comunicados, documentos e a cultura da sua empresa em um ambiente seguro e engajador."
-        icon={<Server size={40} />}
-      />
 
       <Modal
         isOpen={activeModal === 'helpdesk'}
@@ -78,7 +70,6 @@ export const Navbar: React.FC = () => {
             {/* Navegação Desktop */}
             <div className="hidden lg:flex items-center gap-6">
 
-              <Link to="/" className="text-gray-600 hover:text-brand-600 font-medium text-sm">Início</Link>
 
               {/* DROPDOWN: O que fazemos */}
               <div className="relative group">
@@ -114,8 +105,8 @@ export const Navbar: React.FC = () => {
                 </button>
                 <div className="absolute top-full left-0 w-64 bg-white rounded-xl shadow-xl border border-gray-100 p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0">
 
-                  {/* Floki - Link para Home (Software Principal) */}
-                  <Link to="/" className="flex items-start gap-3 p-3 rounded-lg hover:bg-brand-50 transition-colors group/item">
+                  {/* Floki - Link para Página Floki */}
+                  <Link to="/floki" className="flex items-start gap-3 p-3 rounded-lg hover:bg-brand-50 transition-colors group/item">
                     {/* Substituído pelo componente Logo com app="floki" */}
                     <Logo app="floki" />
                     <div>
@@ -124,15 +115,15 @@ export const Navbar: React.FC = () => {
                     </div>
                   </Link>
 
-                  {/* PandaNet - Modal */}
-                  <button onClick={() => setActiveModal('pandanet')} className="w-full text-left flex items-start gap-3 p-3 rounded-lg hover:bg-brand-50 transition-colors group/item">
+                  {/* PandaNet - Link Direto */}
+                  <Link to="/pandanet" className="flex items-start gap-3 p-3 rounded-lg hover:bg-brand-50 transition-colors group/item">
                     {/* Substituído pelo componente Logo com app="pandanet" */}
                     <Logo app="pandanet" />
                     <div>
                       <p className="text-sm font-semibold text-gray-900">PandaNet</p>
                       <p className="text-xs text-gray-500">Intranet Corporativa.</p>
                     </div>
-                  </button>
+                  </Link>
 
                   {/* Helpdesk - Modal */}
                   <button onClick={() => setActiveModal('helpdesk')} className="w-full text-left flex items-start gap-3 p-3 rounded-lg hover:bg-brand-50 transition-colors group/item">
@@ -149,17 +140,31 @@ export const Navbar: React.FC = () => {
               {/* Link Simples para Funcionalidades */}
               <Link to="/funcionalidades" className="text-gray-600 hover:text-brand-600 font-medium text-sm">Funcionalidades</Link>
 
-              <Link to="/precos" className="text-gray-600 hover:text-brand-600 font-medium text-sm">Preços</Link>
             </div>
 
             {/* Botões de Ação */}
-            <div className="hidden lg:flex items-center gap-3">
-              <Button variant="ghost" size="sm" onClick={handleLogin}>
-                Entrar
-              </Button>
-              <Button size="sm" onClick={() => navigate('/cadastro')}>
-                Teste 7 dias grátis
-              </Button>
+            <div className="hidden lg:flex items-center gap-6">
+              <div className="flex items-center gap-2 pr-4 border-r border-gray-100">
+                <Logo app="floki" className="w-5 h-5" />
+                <button onClick={handleLogin} className="text-[10px] font-bold text-gray-400 hover:text-brand-600 uppercase tracking-tighter text-left leading-tight">
+                  Já é cliente Floki?<br />
+                  <span className="text-brand-600">Clique aqui</span>
+                </button>
+              </div>
+
+              <div className="flex items-center gap-2 pr-4 border-r border-gray-100">
+                <Logo app="pandanet" className="w-5 h-5" />
+                <button onClick={() => window.location.href = "https://pandanet.grupopixel.com.br/"} className="text-[10px] font-bold text-gray-400 hover:text-brand-600 uppercase tracking-tighter text-left leading-tight">
+                  Já é cliente PandaNet?<br />
+                  <span className="text-brand-600">Clique aqui</span>
+                </button>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <Button size="sm" onClick={() => navigate('/cadastro')}>
+                  Teste 7 dias grátis
+                </Button>
+              </div>
             </div>
 
             {/* Menu Mobile */}
@@ -179,7 +184,6 @@ export const Navbar: React.FC = () => {
         {isMobileMenuOpen && (
           <div className="lg:hidden absolute top-full left-0 right-0 bg-white border-t border-gray-100 shadow-lg max-h-[80vh] overflow-y-auto">
             <div className="p-4 flex flex-col gap-2">
-              <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="py-2 px-4 hover:bg-gray-50 rounded-lg font-medium text-gray-700">Início</Link>
 
               <div className="px-4 py-2 bg-gray-50 rounded-lg">
                 <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">O que fazemos</p>
@@ -189,20 +193,16 @@ export const Navbar: React.FC = () => {
 
               <div className="px-4 py-2 bg-gray-50 rounded-lg">
                 <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Nossas Aplicações</p>
-                <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="block py-1 text-sm text-gray-600">Floki</Link>
-                <button onClick={() => { setActiveModal('pandanet'); setIsMobileMenuOpen(false); }} className="block w-full text-left py-1 text-sm text-gray-600">PandaNet</button>
+                <Link to="/floki" onClick={() => setIsMobileMenuOpen(false)} className="block py-1 text-sm text-gray-600">Floki</Link>
+                <Link to="/pandanet" onClick={() => setIsMobileMenuOpen(false)} className="block py-1 text-sm text-gray-600">PandaNet</Link>
                 <button onClick={() => { setActiveModal('helpdesk'); setIsMobileMenuOpen(false); }} className="block w-full text-left py-1 text-sm text-gray-600">Helpdesk</button>
               </div>
 
               <Link to="/funcionalidades" onClick={() => setIsMobileMenuOpen(false)} className="py-2 px-4 hover:bg-gray-50 rounded-lg font-medium text-gray-700">Funcionalidades</Link>
 
-              <Link to="/precos" onClick={() => setIsMobileMenuOpen(false)} className="py-2 px-4 hover:bg-gray-50 rounded-lg font-medium text-gray-700">Preços</Link>
 
               <hr className="my-2 border-gray-100" />
 
-              <Button variant="ghost" fullWidth onClick={handleLogin}>
-                Entrar
-              </Button>
               <Button fullWidth onClick={() => {
                 navigate('/cadastro');
                 setIsMobileMenuOpen(false);

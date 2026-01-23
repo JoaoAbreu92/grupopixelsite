@@ -27,14 +27,14 @@ export const Logo: React.FC<LogoProps> = ({ variant = 'dark', className = '', ap
 
   // URL do Logo Principal (Grupopixel)
   // Deixe vazio para usar o ícone padrão (Box) + Texto
-  const mainLogoUrl = "https://i.postimg.cc/L8WTJ4PM/grupopixel-logo-placeholder-verde.webp";
+  const mainLogoUrl = "/pixel-logo-raw.png";
 
   // URLs dos Logos dos Produtos (Submenus)
   // Preencha com o link da imagem (ex: "https://site.com/logo-floki.png")
   // Se deixar vazio (""), ele mostrará o ícone padrão correspondente.
   const appUrls = {
     floki: "https://i.postimg.cc/65mR0jQt/1.png",
-    pandanet: "",
+    pandanet: "/pandanet-logo.png",
     helpdesk: ""
   };
 
@@ -50,7 +50,7 @@ export const Logo: React.FC<LogoProps> = ({ variant = 'dark', className = '', ap
         <img
           src={url}
           alt={`Logo ${app}`}
-          className={`w-10 h-10 object-contain rounded-lg ${className}`}
+          className={`object-contain ${className || 'w-10 h-10'}`}
         />
       );
     }
@@ -76,11 +76,11 @@ export const Logo: React.FC<LogoProps> = ({ variant = 'dark', className = '', ap
   const textColorSecondary = variant === 'dark' ? 'text-gray-500' : 'text-gray-400';
 
   return (
-    <div className={`flex items-center gap-2 select-none ${className}`}>
+    <div className={`flex items-center gap-3 select-none ${className}`}>
 
       {mainLogoUrl ? (
-        <div className="bg-white rounded-full p-0 flex items-center justify-center">
-          <img src={mainLogoUrl} alt="Logo Grupopixel" className="h-20 w-20 object-contain rounded-full" />
+        <div className="flex items-center justify-center">
+          <img src={mainLogoUrl} alt="Logo" className="h-10 w-10 md:h-12 md:w-12 object-contain" />
         </div>
       ) : (
         <div className="w-10 h-10 bg-brand-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-brand-500/30 transition-transform hover:scale-105">
