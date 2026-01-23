@@ -155,14 +155,14 @@ const HomePage = () => (
             <span className="text-[10px] font-bold text-gray-400 group-hover:text-brand-600 uppercase tracking-tighter">ACRILIGHT</span>
           </div>
 
-          <div className="group flex flex-col items-center gap-4 transition-transform hover:scale-105 duration-300">
+          <a href="https://www.deployinformatica.com.br/" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center gap-4 transition-transform hover:scale-105 duration-300">
             <img
               src="/deploy-logo.jpg"
               alt="Deploy Informática"
               className="w-20 h-20 md:w-28 md:h-28 rounded-3xl grayscale group-hover:grayscale-0 transition-all opacity-60 group-hover:opacity-100 object-cover shadow-md bg-white p-2"
             />
             <span className="text-[10px] font-bold text-gray-400 group-hover:text-brand-600 uppercase tracking-tighter">DEPLOY INF.</span>
-          </div>
+          </a>
 
           <a href="https://cordelcomacai.com/" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center gap-4 transition-transform hover:scale-105 duration-300">
             <img

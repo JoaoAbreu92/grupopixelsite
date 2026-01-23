@@ -14,41 +14,28 @@ import { ChevronLeft, ChevronRight, Zap, Star, Shield, Smartphone } from 'lucide
 const slides = [
   {
     id: 1,
-    // EXEMPLO COM IMAGEM (Basta adicionar a URL da imagem)
-    // O texto é opcional. Se remover title/description, fica apenas a imagem.
-    imageUrl: "/images/n8n_banner.png",
+    imageUrl: "/images/floki_new.png",
     title: "",
-    description: "Agora o Floki responde seus clientes com a inteligência artificial mais avançada do mundo.",
-    icon: null, // Ícone não é usado no modo imagem (opcional)
-    color: "bg-gray-800" // Cor ignorada se tiver imagem
+    description: "",
+    icon: null,
+    color: "bg-[#0c0c0c]" // Cor de fundo para combinar com o Floki
   },
   {
     id: 2,
-    // EXEMPLO COM TEXTO E COR SÓLIDA
-    imageUrl: "/images/pandanet_banner.png", // Deixe vazio para usar o modo Texto/Ícone
+    imageUrl: "/images/pandanet_new.png",
     title: "",
-    description: "Um novo jeito de se comunicar na sua empresa",
-    icon: <Smartphone size={48} className="text-brand-400" />,
-    color: "bg-gray-800"
+    description: "",
+    icon: null,
+    color: "bg-[#0a0f1e]" // Cor de fundo para combinar com PandaNet
   },
   {
     id: 3,
-    // EXEMPLO COM TEXTO E COR SÓLIDA
-    imageUrl: "/images/helpdesk_banner.png",
+    imageUrl: "/images/grupopixel_new.png",
     title: "",
-    description: "Abrir chamados nunca foi tão fácil.",
-    icon: <Shield size={48} className="text-blue-400" />,
-    color: "bg-slate-800"
+    description: "",
+    icon: null,
+    color: "bg-[#111111]" // Cor de fundo para combinar com GrupoPixel
   },
-  /*{
-    id: 4,
-    // EXEMPLO COM TEXTO E COR SÓLIDA
-    imageUrl: "",
-    title: "Dashboard 2.0 Lançado",
-    description: "Novas métricas, gráficos em tempo real e exportação de relatórios.",
-    icon: <Star size={48} className="text-orange-400" />,
-    color: "bg-brand-900"
-  }*/
 ];
 
 export const NewsCarousel: React.FC = () => {
@@ -72,17 +59,17 @@ export const NewsCarousel: React.FC = () => {
 
   return (
     <div className="w-full bg-white py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1700px] mx-auto px-4 md:px-8">
         <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Novidades Grupopixel</h2>
 
-        <div className="relative w-full h-72 md:h-[450px] lg:h-[520px] overflow-hidden rounded-2xl shadow-xl group bg-gray-100">
+        <div className="relative w-full h-56 md:h-[350px] lg:h-[420px] overflow-hidden rounded-2xl shadow-2xl group bg-gray-100">
 
           {/* Slides */}
           {slides.map((slide, index) => (
             <div
               key={slide.id}
               className={`absolute top-0 left-0 w-full h-full transition-all duration-700 ease-in-out transform ${index === current ? 'opacity-100 translate-x-0 z-20' : 'opacity-0 translate-x-10 z-10'
-                } ${!slide.imageUrl ? slide.color : ''}`}
+                } ${slide.color}`}
               style={{ display: index === current ? 'block' : 'none' }}
             >
               {/* LÓGICA DE RENDERIZAÇÃO: IMAGEM OU TEXTO */}
@@ -93,7 +80,7 @@ export const NewsCarousel: React.FC = () => {
                   <img
                     src={slide.imageUrl}
                     alt={slide.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
                   />
                   {/* Overlay Escuro para leitura do texto (Só aparece se tiver texto) */}
                   {(slide.title || slide.description) && (
