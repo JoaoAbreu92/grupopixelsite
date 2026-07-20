@@ -170,8 +170,8 @@ export const ContactPage = () => {
                 <Phone className="text-blue-600" size={20} /> Telefone & WhatsApp
               </h3>
               <p className="text-gray-600 mb-2 text-sm">Fale conosco agora:</p>
-              <a href="https://wa.me/5541984826972" target="_blank" rel="noopener noreferrer" className="text-blue-600 font-medium hover:underline block mb-4">
-                (41) 98482-6972
+              <a href="https://wa.me/5541991744990" target="_blank" rel="noopener noreferrer" className="text-blue-600 font-medium hover:underline block mb-4">
+                (41) 99174-4990
               </a>
               <div className="flex items-center gap-2 text-xs text-gray-400 bg-gray-50 p-2 rounded">
                 <Clock size={12} /> 24/7 para emergências

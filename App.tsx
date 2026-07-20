@@ -1,4 +1,3 @@
-
 /**
  * Componente App Principal
  * Gerencia o roteamento e o layout global da aplicação.

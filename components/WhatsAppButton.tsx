@@ -3,7 +3,7 @@ import { MessageCircle, X } from 'lucide-react';
 
 export const WhatsAppButton: React.FC = () => {
     const [showPopup, setShowPopup] = useState(false);
-    const PHONE_NUMBER = "5541984826972"; // Substitua pelo número real se disponível
+    const PHONE_NUMBER = "5541991744990"; // Substitua pelo número real se disponível
     const WHATSAPP_URL = `https://wa.me/${PHONE_NUMBER}?text=Olá! Gostaria de saber mais sobre o Floki.`;
 
     useEffect(() => {

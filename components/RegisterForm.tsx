@@ -11,12 +11,30 @@ import { CheckCircle2, ArrowRight, MessageCircle } from 'lucide-react';
 export const RegisterForm: React.FC = () => {
   // Estado para controlar se o formulário foi enviado
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [whatsappUrl, setWhatsappUrl] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Aqui iria a lógica de envio para o backend
-    // Simulando envio bem-sucedido:
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get('name') as string;
+    const email = formData.get('email') as string;
+    const whatsappNum = formData.get('whatsapp') as string;
+    const company = formData.get('company') as string;
+
+    const message = `Olá! Acabei de enviar meu cadastro no site para o teste de 15 dias grátis:
+- Nome: ${name}
+- Email: ${email}
+- WhatsApp: ${whatsappNum}
+- Empresa: ${company}`;
+
+    const encodedText = encodeURIComponent(message);
+    const url = `https://wa.me/5541991744990?text=${encodedText}`;
+    
+    setWhatsappUrl(url);
     setIsSubmitted(true);
+    
+    // Redireciona para o WhatsApp imediatamente
+    window.open(url, '_blank');
   };
 
   return (
@@ -80,7 +98,7 @@ export const RegisterForm: React.FC = () => {
                 
                 {/* Botão do WhatsApp */}
                 <a 
-                  href="https://wa.me/5541984826972?text=Ol%C3%A1%2C%20acabei%20de%20enviar%20meu%20cadastro%20no%20site%20e%20gostaria%20de%20liberar%20meu%20acesso%20de%20teste."
+                  href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg hover:shadow-[#25D366]/30 group"
@@ -99,6 +117,7 @@ export const RegisterForm: React.FC = () => {
                     required
                     type="text" 
                     id="name" 
+                    name="name" 
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all"
                     placeholder="Seu nome"
                   />
@@ -110,6 +129,7 @@ export const RegisterForm: React.FC = () => {
                     required
                     type="email" 
                     id="email" 
+                    name="email" 
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all"
                     placeholder="voce@suaempresa.com"
                   />
@@ -121,6 +141,7 @@ export const RegisterForm: React.FC = () => {
                     required
                     type="tel" 
                     id="whatsapp" 
+                    name="whatsapp" 
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all"
                     placeholder="(00) 00000-0000"
                   />
@@ -132,6 +153,7 @@ export const RegisterForm: React.FC = () => {
                     required
                     type="text" 
                     id="company" 
+                    name="company" 
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all"
                     placeholder="Sua Empresa Ltda"
                   />
