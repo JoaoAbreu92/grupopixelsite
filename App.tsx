@@ -11,7 +11,6 @@ import { Zap, Rocket } from 'lucide-react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Features } from './components/Features';
-import { Stats } from './components/Stats';
 import { Pricing } from './components/Pricing';
 import { FAQ } from './components/FAQ';
 import { Footer } from './components/Footer';
@@ -178,9 +177,6 @@ const HomePage = () => (
 
     {/* NOVA SEÇÃO: O Que Fazemos (Showcase da Agência) */}
     <AgencyShowcase />
-
-    {/* Prova Social (Métricas) */}
-    <Stats />
 
     {/* Seção de Depoimentos (Feedback de Parceiros) */}
     <Testimonials />

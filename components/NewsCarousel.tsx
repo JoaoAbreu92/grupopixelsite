@@ -58,11 +58,11 @@ export const NewsCarousel: React.FC = () => {
   };
 
   return (
-    <div className="w-full bg-white py-12">
-      <div className="max-w-[1700px] mx-auto px-4 md:px-8">
+    <div className="w-full bg-white py-[10px]">
+      <div className="w-full px-[10px]">
         <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Novidades Grupopixel</h2>
 
-        <div className="relative w-full h-56 md:h-[350px] lg:h-[420px] overflow-hidden rounded-2xl shadow-2xl group bg-gray-100">
+        <div className="relative w-full h-64 md:h-[420px] lg:h-[520px] overflow-hidden rounded-2xl shadow-2xl group bg-gray-100">
 
           {/* Slides */}
           {slides.map((slide, index) => (
