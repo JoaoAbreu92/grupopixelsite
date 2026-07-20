@@ -19,7 +19,8 @@ import {
   Zap,
   Server,
   Skull,
-  UserCheck
+  UserCheck,
+  FileText
 } from 'lucide-react';
 
 export const SentinelaPage: React.FC = () => {
