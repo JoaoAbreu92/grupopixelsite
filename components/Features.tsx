@@ -17,10 +17,16 @@ import {
   ShieldCheck,
   Cpu,
   Globe,
-  Rocket
+  Rocket,
+  Usb,
+  FolderLock,
+  Terminal,
+  Key,
+  Clock
 } from 'lucide-react';
 import { Button } from './Button';
 import { useNavigate } from 'react-router-dom';
+import { Logo } from './Logo';
 
 const flokiFeatures = [
   {
@@ -88,9 +94,42 @@ const pandanetFeatures = [
   }
 ];
 
+const sentinelaFeatures = [
+  {
+    icon: <Usb className="w-6 h-6" />,
+    title: "Bloqueio USB Inteligente",
+    description: "Desative a leitura ou gravação de pendrives e mídias removíveis locais de forma imediata e remota."
+  },
+  {
+    icon: <Terminal className="w-6 h-6" />,
+    title: "Restrição do S.O. & CMD",
+    description: "Bloqueie o acesso ao Prompt de Comando (CMD), PowerShell, Painel de Controle e configurações de rede."
+  },
+  {
+    icon: <FolderLock className="w-6 h-6" />,
+    title: "Blindagem de Diretórios",
+    description: "Impeça a leitura, gravação ou cópia de pastas locais confidenciais contra sequestro por ransomware."
+  },
+  {
+    icon: <Globe className="w-6 h-6" />,
+    title: "Filtro de Conteúdo Web",
+    description: "Bloqueie de forma inteligente redes sociais, pornografia, sites de apostas ou crie listas brancas de domínios."
+  },
+  {
+    icon: <Key className="w-6 h-6" />,
+    title: "PIN Admin de Emergência",
+    description: "Use um código mestre dinâmico local para desativar temporariamente o agente durante manutenções de TI."
+  },
+  {
+    icon: <Clock className="w-6 h-6" />,
+    title: "Agendamento de Regras",
+    description: "Automatize os bloqueios por horário, liberando acessos apenas no almoço ou após o expediente."
+  }
+];
+
 export const Features: React.FC = () => {
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState<'all' | 'floki' | 'pandanet'>('all');
+  const [activeTab, setActiveTab] = useState<'all' | 'floki' | 'pandanet' | 'sentinela'>('all');
 
   return (
     <div className="bg-[#0A0A0C] min-h-screen text-white pb-20">
@@ -111,7 +150,7 @@ export const Features: React.FC = () => {
           </p>
 
           {/* Filtros de Navegação */}
-          <div className="flex justify-center gap-4 mb-16">
+          <div className="flex justify-center gap-4 mb-16 font-sans">
             <button
               onClick={() => setActiveTab('all')}
               className={`px-8 py-3 rounded-2xl font-bold transition-all ${activeTab === 'all' ? 'bg-brand-500 text-white shadow-lg shadow-brand-500/20' : 'bg-white/5 text-gray-400 hover:bg-white/10'}`}
@@ -129,6 +168,12 @@ export const Features: React.FC = () => {
               className={`px-8 py-3 rounded-2xl font-bold transition-all ${activeTab === 'pandanet' ? 'bg-brand-500 text-white shadow-lg shadow-brand-500/20' : 'bg-white/5 text-gray-400 hover:bg-white/10'}`}
             >
               PandaNet
+            </button>
+            <button
+              onClick={() => setActiveTab('sentinela')}
+              className={`px-8 py-3 rounded-2xl font-bold transition-all ${activeTab === 'sentinela' ? 'bg-brand-500 text-white shadow-lg shadow-brand-500/20' : 'bg-white/5 text-gray-400 hover:bg-white/10'}`}
+            >
+              Sentinela
             </button>
           </div>
         </div>
@@ -177,6 +222,34 @@ export const Features: React.FC = () => {
               {pandanetFeatures.map((f, i) => (
                 <div key={i} className="group p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand-500/20">
                   <div className="w-14 h-14 bg-brand-500/20 rounded-2xl flex items-center justify-center text-brand-400 mb-6 group-hover:scale-110 transition-transform">
+                    {f.icon}
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">{f.title}</h3>
+                  <p className="text-gray-400 leading-relaxed text-sm">
+                    {f.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Sentinela Features Section */}
+      {(activeTab === 'all' || activeTab === 'sentinela') && (
+        <section className="py-20 relative px-4">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex items-center gap-4 mb-12">
+              <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center border border-emerald-500/30 overflow-hidden">
+                <Logo app="sentinela" className="w-8 h-8 object-contain" />
+              </div>
+              <h2 className="text-3xl font-bold">Funcionalidades do <span className="text-emerald-400">Sentinela</span></h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {sentinelaFeatures.map((f, i) => (
+                <div key={i} className="group p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-emerald-500/10">
+                  <div className="w-14 h-14 bg-emerald-500/20 rounded-2xl flex items-center justify-center text-emerald-400 mb-6 group-hover:scale-110 transition-transform">
                     {f.icon}
                   </div>
                   <h3 className="text-xl font-bold mb-3">{f.title}</h3>
