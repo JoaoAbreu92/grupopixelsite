@@ -27,7 +27,7 @@ export const Logo: React.FC<LogoProps> = ({ variant = 'dark', className = '', ap
 
   // URL do Logo Principal (Grupopixel)
   // Deixe vazio para usar o ícone padrão (Box) + Texto
-  const mainLogoUrl = "/pixel-logo-raw.png";
+  const mainLogoUrl = "/pixel-logo-v2.png";
 
   // URLs dos Logos dos Produtos (Submenus)
   // Preencha com o link da imagem (ex: "https://site.com/logo-floki.png")
