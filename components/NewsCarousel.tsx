@@ -1,11 +1,11 @@
 /**
- * Componente NewsCarousel (Carrossel de Novidades)
- * Exibe banners rotativos com novidades da plataforma.
- * 
- * ATUALIZAÇÃO: Agora suporta Banners de Imagem ou Banners de Texto/Ícone.
- * - Para usar IMAGEM: Preencha a propriedade 'imageUrl'.
- * - Para usar TEXTO/ÍCONE: Deixe 'imageUrl' vazio e use 'color' + 'icon'.
- */
+* Componente NewsCarousel (Carrossel de Novidades)
+* Exibe banners rotativos com novidades da plataforma.
+* 
+* ATUALIZAÇÃO: Agora suporta Banners de Imagem ou Banners de Texto/Ícone.
+* - Para usar IMAGEM: Preencha a propriedade 'imageUrl'.
+* - Para usar TEXTO/ÍCONE: Deixe 'imageUrl' vazio e use 'color' + 'icon'.
+*/
 
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Zap, Star, Shield, Smartphone } from 'lucide-react';
