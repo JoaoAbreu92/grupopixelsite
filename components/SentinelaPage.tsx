@@ -330,55 +330,76 @@ export const SentinelaPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Installation Manuals Section */}
+      {/* Installation Manuals Section (Official Manuals) */}
       <section id="manual-instalacao" className="py-24 bg-[#05070B] border-t border-white/5">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-left space-y-12">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
           
-          <div className="space-y-4">
-            <h2 className="text-3xl font-black text-white">Manuais de Instalação</h2>
-            <p className="text-gray-400 text-sm font-light">
-              O Sentinela Security é composto por um instalador silencioso para os computadores corporativos (clientes) e por um painel web central para gerenciamento de políticas.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="border border-emerald-500/25 rounded-3xl p-8 md:p-12 bg-[#070b10] space-y-8 relative overflow-hidden shadow-2xl">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 rounded-full blur-2xl"></div>
             
-            {/* Windows Agent Card */}
-            <div className="bg-[#080B10] border border-white/10 rounded-2xl p-8 space-y-6 flex flex-col justify-between">
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="p-2.5 bg-blue-500/10 text-blue-400 rounded-xl"><Laptop size={24} /></div>
-                  <div>
-                    <h4 className="font-bold text-white">Agente Cliente Windows</h4>
-                    <span className="text-[10px] text-gray-500 font-mono">Compatível com Windows 10 e 11 Pro/Enterprise</span>
-                  </div>
-                </div>
-                <p className="text-xs text-gray-400 leading-relaxed font-light">
-                  Instale silenciosamente via Active Directory (GPO) ou instalador local. O agente opera como serviço do sistema sob baixíssimo consumo de memória (menos de 20MB) e comunica-se com a nuvem a cada 30 segundos.
-                </p>
+            <div className="space-y-4">
+              <div className="flex items-center gap-2 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+                <FileText size={16} />
+                Manuais Oficiais (Foco em Usuários Leigos)
               </div>
-              <Button className="w-full bg-emerald-600 hover:bg-emerald-500 border-none text-white font-bold flex items-center justify-center gap-2">
-                <Download size={16} /> Baixar Instalador Windows (.msi)
-              </Button>
+              
+              <h3 className="text-xl md:text-2xl font-black text-white uppercase tracking-tight">
+                Manual de Uso e Instalação Simplificado - Compatível com Google Docs & MS Word
+              </h3>
+              
+              <p className="text-xs md:text-sm text-gray-400 leading-relaxed font-light">
+                Desenvolvemos um manual passo a passo ultra detalhado focado em funcionários e gestores <strong>sem nenhum conhecimento em TI ou informática</strong>. Ele ensina como instalar o sistema, como funcionam os bloqueios USB de forma visual e como acessar o painel administrativo. Como o Google Docs costuma rejeitar arquivos .doc gerados por códigos web, disponibilizamos múltiplos formatos amigáveis para garantir compatibilidade total:
+              </p>
             </div>
 
-            {/* Linux Agent Card */}
-            <div className="bg-[#080B10] border border-white/10 rounded-2xl p-8 space-y-6 flex flex-col justify-between">
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="p-2.5 bg-yellow-500/10 text-yellow-400 rounded-xl"><Server size={24} /></div>
-                  <div>
-                    <h4 className="font-bold text-white">Agente Cliente Linux</h4>
-                    <span className="text-[10px] text-gray-500 font-mono">Compatível com Ubuntu 20.04+, Debian e RHEL</span>
-                  </div>
+            <div className="grid md:grid-cols-2 gap-8 pt-4">
+              {/* HTML Manual Card (Keeping only this option as requested) */}
+              <div className="bg-[#05070B] border border-white/5 p-6 rounded-2xl flex flex-col justify-between space-y-6">
+                <div className="space-y-3">
+                  <span className="text-[9px] font-bold text-amber-400 bg-amber-950/40 border border-amber-500/20 px-2 py-0.5 rounded uppercase tracking-wider">
+                    ⭐ Recomendado para Google Docs
+                  </span>
+                  <h4 className="font-bold text-white text-base">Formato Web (HTML)</h4>
+                  <p className="text-xs text-gray-400 leading-relaxed font-light">
+                    Abra este arquivo no navegador, pressione <strong>Ctrl+A</strong> para selecionar tudo, copie e cole no seu Google Docs. Toda a formatação, tabelas e cores serão copiadas perfeitamente!
+                  </p>
                 </div>
-                <p className="text-xs text-gray-400 leading-relaxed font-light">
-                  Execute no endpoint via daemon systemd. Protege e monitora partições de disco Ext4 contra modificações indevidas, além de forçar regras de iptables locais alinhadas com o painel central de segurança.
-                </p>
+                
+                <a 
+                  href="https://sentinela.grupopixel.com.br/manual_sentinela.html" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="block w-full"
+                >
+                  <Button className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 text-xs uppercase tracking-wider flex items-center justify-center gap-2 border-none">
+                    <FileText size={14} /> Abrir Manual HTML
+                  </Button>
+                </a>
               </div>
-              <Button className="w-full bg-emerald-600 hover:bg-emerald-500 border-none text-white font-bold flex items-center justify-center gap-2">
-                <Download size={16} /> Baixar Pacote Linux (.deb / .rpm)
-              </Button>
+
+              {/* PDF & Download Info Card */}
+              <div className="bg-[#05070B] border border-white/5 p-6 rounded-2xl flex flex-col justify-between space-y-6">
+                <div className="space-y-3">
+                  <span className="text-[9px] font-bold text-emerald-400 bg-emerald-950/40 border border-emerald-500/20 px-2 py-0.5 rounded uppercase tracking-wider">
+                    📄 Download Disponível
+                  </span>
+                  <h4 className="font-bold text-white text-base">Download em PDF</h4>
+                  <p className="text-xs text-gray-400 leading-relaxed font-light">
+                    O arquivo HTML do manual também contém o link direto para baixar a versão completa em PDF, ideal para impressão ou envio por e-mail para seus colaboradores.
+                  </p>
+                </div>
+
+                <a 
+                  href="https://sentinela.grupopixel.com.br/manual_sentinela.html" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="block w-full"
+                >
+                  <Button variant="ghost" className="w-full border border-white/10 hover:bg-white/5 text-white font-bold py-3 text-xs uppercase tracking-wider flex items-center justify-center gap-2">
+                    <Download size={14} /> Ir para Download do PDF
+                  </Button>
+                </a>
+              </div>
             </div>
 
           </div>
