@@ -68,7 +68,7 @@ export const Hero: React.FC = () => {
 
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-8">
               <Button size="lg" className="group shadow-lg shadow-brand-500/20" onClick={() => navigate('/cadastro')}>
-                Teste 7 dias grátis
+                Teste 15 dias grátis
                 <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button variant="outline" size="lg" onClick={() => navigate('/funcionalidades')}>

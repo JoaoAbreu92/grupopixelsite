@@ -23,7 +23,7 @@ const plans = [
       "Acesso ao Kanban"
     ],
     highlight: false,
-    cta: "Teste 7 dias grátis"
+    cta: "Teste 15 dias grátis"
   },
   {
     name: "Growth",
@@ -39,7 +39,7 @@ const plans = [
       "Suporte Prioritário"
     ],
     highlight: true,
-    cta: "Teste 7 dias grátis"
+    cta: "Teste 15 dias grátis"
   },
   {
     name: "Enterprise",

@@ -16,7 +16,7 @@ import { Box, MessageSquare, Server, LifeBuoy } from 'lucide-react';
 interface LogoProps {
   variant?: 'dark' | 'light'; // 'dark' = texto escuro (navbar), 'light' = texto claro (footer)
   className?: string;
-  app?: 'floki' | 'pandanet' | 'helpdesk'; // Se definido, renderiza o logo do produto específico
+  app?: 'floki' | 'pandanet' | 'helpdesk' | 'sentinela'; // Se definido, renderiza o logo do produto específico
 }
 
 export const Logo: React.FC<LogoProps> = ({ variant = 'dark', className = '', app }) => {
@@ -35,7 +35,8 @@ export const Logo: React.FC<LogoProps> = ({ variant = 'dark', className = '', ap
   const appUrls = {
     floki: "https://i.postimg.cc/65mR0jQt/1.png",
     pandanet: "/pandanet-logo.png",
-    helpdesk: ""
+    helpdesk: "",
+    sentinela: ""
   };
 
   // ==================================================================================
@@ -59,7 +60,8 @@ export const Logo: React.FC<LogoProps> = ({ variant = 'dark', className = '', ap
     const iconStyles = {
       floki: "bg-green-50 text-green-600 group-hover/item:bg-white",
       pandanet: "bg-orange-50 text-orange-600 group-hover/item:bg-white",
-      helpdesk: "bg-teal-50 text-teal-600 group-hover/item:bg-white"
+      helpdesk: "bg-teal-50 text-teal-600 group-hover/item:bg-white",
+      sentinela: "bg-emerald-50 text-emerald-600 group-hover/item:bg-white"
     };
 
     return (
@@ -67,6 +69,17 @@ export const Logo: React.FC<LogoProps> = ({ variant = 'dark', className = '', ap
         {app === 'floki' && <MessageSquare size={18} />}
         {app === 'pandanet' && <Server size={18} />}
         {app === 'helpdesk' && <LifeBuoy size={18} />}
+        {app === 'sentinela' && (
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-[18px] h-[18px]">
+            <path d="M12 2L9 7h6z" fill="currentColor" opacity="0.2" />
+            <path d="M9 7l-2 15h10l-2-15" />
+            <path d="M6 22h12" />
+            <path d="M12 7v15" />
+            <path d="M9 12h6" />
+            <path d="M9 17h6" />
+            <circle cx="12" cy="4.5" r="1" fill="currentColor" />
+          </svg>
+        )}
       </div>
     );
   }

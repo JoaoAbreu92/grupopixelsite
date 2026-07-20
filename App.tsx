@@ -24,6 +24,7 @@ import { Testimonials } from './components/Testimonials';
 import { BackToTop } from './components/BackToTop'; // Importação do botão voltar ao topo
 import { WhatsAppButton } from './components/WhatsAppButton';
 import { PandaNetPage } from './components/PandaNetPage';
+import { SentinelaPage } from './components/SentinelaPage';
 import { GrupopixelHero } from './components/GrupopixelHero';
 import { AgencyShowcase } from './components/AgencyShowcase';
 
@@ -208,6 +209,9 @@ function App() {
 
             {/* Nova Página PandaNet */}
             <Route path="/pandanet" element={<PandaNetPage />} />
+
+            {/* Nova Página Sentinela */}
+            <Route path="/sentinela" element={<SentinelaPage />} />
 
             {/* Novas Páginas de Serviços */}
             <Route path="/sites-modernos" element={<ModernSitesPage />} />

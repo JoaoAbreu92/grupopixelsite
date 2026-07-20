@@ -125,6 +125,15 @@ export const Navbar: React.FC = () => {
                     </div>
                   </Link>
 
+                  {/* Sentinela - Link Direto */}
+                  <Link to="/sentinela" className="flex items-start gap-3 p-3 rounded-lg hover:bg-brand-50 transition-colors group/item">
+                    <Logo app="sentinela" />
+                    <div>
+                      <p className="text-sm font-semibold text-gray-900">Sentinela</p>
+                      <p className="text-xs text-gray-500">Segurança de Endpoints.</p>
+                    </div>
+                  </Link>
+
                   {/* Helpdesk - Modal */}
                   <button onClick={() => setActiveModal('helpdesk')} className="w-full text-left flex items-start gap-3 p-3 rounded-lg hover:bg-brand-50 transition-colors group/item">
                     {/* Substituído pelo componente Logo com app="helpdesk" */}
@@ -160,9 +169,17 @@ export const Navbar: React.FC = () => {
                 </button>
               </div>
 
+              <div className="flex items-center gap-2 pr-4 border-r border-gray-100">
+                <Logo app="sentinela" className="w-5 h-5" />
+                <button onClick={() => navigate('/sentinela')} className="text-[10px] font-bold text-gray-400 hover:text-brand-600 uppercase tracking-tighter text-left leading-tight">
+                  Já é cliente Sentinela?<br />
+                  <span className="text-brand-600">Clique aqui</span>
+                </button>
+              </div>
+
               <div className="flex items-center gap-3">
                 <Button size="sm" onClick={() => navigate('/cadastro')}>
-                  Teste 7 dias grátis
+                  Teste 15 dias grátis
                 </Button>
               </div>
             </div>
@@ -195,6 +212,7 @@ export const Navbar: React.FC = () => {
                 <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Nossas Aplicações</p>
                 <Link to="/floki" onClick={() => setIsMobileMenuOpen(false)} className="block py-1 text-sm text-gray-600">Floki</Link>
                 <Link to="/pandanet" onClick={() => setIsMobileMenuOpen(false)} className="block py-1 text-sm text-gray-600">PandaNet</Link>
+                <Link to="/sentinela" onClick={() => setIsMobileMenuOpen(false)} className="block py-1 text-sm text-gray-600">Sentinela</Link>
                 <button onClick={() => { setActiveModal('helpdesk'); setIsMobileMenuOpen(false); }} className="block w-full text-left py-1 text-sm text-gray-600">Helpdesk</button>
               </div>
 
@@ -207,7 +225,7 @@ export const Navbar: React.FC = () => {
                 navigate('/cadastro');
                 setIsMobileMenuOpen(false);
               }}>
-                Teste 7 dias grátis
+                Teste 15 dias grátis
               </Button>
             </div>
           </div>

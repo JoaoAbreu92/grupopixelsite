@@ -1,6 +1,6 @@
 /**
  * Componente de Cadastro
- * Página de formulário para iniciar o teste grátis de 7 dias.
+ * Página de formulário para iniciar o teste grátis de 15 dias.
  * Atualizado com lógica de envio e redirecionamento para WhatsApp.
  */
 
@@ -27,7 +27,7 @@ export const RegisterForm: React.FC = () => {
           {/* Lado Esquerdo: Benefícios */}
           <div className="flex-1 max-w-lg">
             <h1 className="text-4xl font-bold text-gray-900 mb-6">
-              Comece seu teste de <span className="text-brand-600">7 dias grátis</span>
+              Comece seu teste de <span className="text-brand-600">15 dias grátis</span>
             </h1>
             <p className="text-lg text-gray-600 mb-8">
               Junte-se a outras empresas que transformam seu atendimento com o Floki. Sem necessidade de cartão de crédito.
