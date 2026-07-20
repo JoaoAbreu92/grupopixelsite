@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from './Button';
 import { 
@@ -14,35 +14,16 @@ import {
   Clock, 
   Key, 
   CheckCircle2, 
-  FileText,
   Lock,
   ChevronRight,
-  RefreshCw,
-  Server
+  Zap,
+  Server,
+  Skull,
+  UserCheck
 } from 'lucide-react';
-import { Logo } from './Logo';
 
 export const SentinelaPage: React.FC = () => {
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState<'dashboard' | 'acessos' | 'diretorios' | 'sistema' | 'computadores'>('dashboard');
-  const [consoleLog, setConsoleLog] = useState<string[]>([
-    '[Agent] Sincronizando políticas administrativas com o console central (SLA 99.9%)...',
-    '[Agent] Políticas aplicadas com sucesso: bloqueio USB ativo, diretórios protegidos.'
-  ]);
-  const [simulationLog, setSimulationLog] = useState<string[]>([]);
-  const [isSimulating, setIsSimulating] = useState(false);
-
-  // Simular eventos periódicos do console ou interações
-  const triggerSimulation = (type: string, message: string) => {
-    setIsSimulating(true);
-    const time = new Date().toLocaleTimeString();
-    setSimulationLog(prev => [
-      `[${time}] [SIMULAÇÃO] Tentativa detectada: ${message}`,
-      `[${time}] [AÇÃO SENTINELA] Bloqueio efetuado instantaneamente e reportado ao Admin!`,
-      ...prev
-    ]);
-    setTimeout(() => setIsSimulating(false), 800);
-  };
 
   return (
     <div className="bg-[#05070B] text-gray-200 min-h-screen font-sans selection:bg-emerald-500 selection:text-black">
@@ -110,7 +91,7 @@ export const SentinelaPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Right Side: Lighthouse Premium Visual & Mini Badge */}
+            {/* Right Side: Visual representation of security status (Premium Mockup) */}
             <div className="relative flex justify-center lg:justify-end animate-in zoom-in duration-1000 delay-200">
               <div className="relative w-full max-w-[480px] p-1 bg-gradient-to-tr from-emerald-500/20 via-white/5 to-transparent rounded-3xl border border-white/10 shadow-2xl">
                 <div className="bg-[#080B10] rounded-[22px] overflow-hidden p-8 text-center space-y-6 relative">
@@ -156,460 +137,177 @@ export const SentinelaPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Interactive Admin Console Mockup Section */}
-      <section className="py-24 border-t border-white/5 bg-[#07090E] relative">
+      {/* Comparison Section (Caos vs Controle) */}
+      <section className="py-24 bg-[#07090D] border-t border-white/5 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+          <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
             <h2 className="text-3xl md:text-5xl font-black text-white">
-              Painel de Controle do <span className="text-emerald-400">Sentinela</span>
+              O Controle que sua <span className="text-emerald-400">TI Precisa</span>
             </h2>
             <p className="text-gray-400 text-lg font-light">
-              Explore o painel de controle administrativo. Veja os dados de bloqueio reais e teste o simulador de proteção abaixo.
+              Compare a vulnerabilidade de uma rede sem controle com a tranquilidade da proteção unificada do Sentinela.
             </p>
           </div>
 
-          {/* Console Emulator Box */}
-          <div className="bg-[#080B10] border border-white/10 rounded-2xl shadow-3xl overflow-hidden max-w-5xl mx-auto">
-            {/* Header */}
-            <div className="bg-[#05070A] p-4 flex flex-col md:flex-row md:items-center justify-between border-b border-white/10 gap-4">
-              <div className="flex items-center gap-3">
-                <div className="p-2 bg-emerald-950/40 rounded-lg text-emerald-400 border border-emerald-500/20">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
-                    <path d="M12 2L9 7h6z" />
-                    <path d="M9 7l-2 15h10l-2-15" />
-                    <path d="M6 22h12" />
-                  </svg>
-                </div>
-                <div>
-                  <div className="font-mono text-sm font-bold text-white flex items-center gap-2">
-                    Sentinela Security <span className="text-[10px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-1.5 py-0.2 rounded uppercase">v1.2.0-stable</span>
-                  </div>
-                  <div className="text-[10px] text-gray-500 uppercase tracking-wider font-bold">Console Central de Segurança e Agentes Electron</div>
-                </div>
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* Caos */}
+            <div className="p-8 rounded-3xl bg-[#090b10] border border-red-500/10 space-y-6">
+              <div className="flex items-center gap-3 text-red-500">
+                <Skull size={28} />
+                <h3 className="text-xl font-bold text-white">Sem Sentinela Security</h3>
               </div>
-
-              {/* Status Indicator */}
-              <div className="flex items-center gap-4 text-xs font-mono">
-                <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
-                  <span className="text-emerald-400 font-bold">CONECTADO À NUVEM</span>
-                </div>
-                <div className="hidden sm:block text-gray-500">IP: 189.36.252.32</div>
-              </div>
+              <ul className="space-y-4 text-sm text-gray-400">
+                <li className="flex items-start gap-3">
+                  <span className="text-red-500 font-bold text-lg leading-none">•</span>
+                  <span><strong>Vazamento de dados:</strong> Usuários podem copiar arquivos confidenciais para pendrives comuns.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-red-500 font-bold text-lg leading-none">•</span>
+                  <span><strong>Desconfigurações locais:</strong> Funcionários podem abrir o CMD, alterar IPs ou desativar defesas do Windows.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-red-500 font-bold text-lg leading-none">•</span>
+                  <span><strong>Invasão e Malware:</strong> Facilidade para instalar softwares não autorizados ou vírus por drivers USB.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-red-500 font-bold text-lg leading-none">•</span>
+                  <span><strong>Distrações e Riscos Web:</strong> Acesso livre a sites de apostas, redes sociais e pornografia no horário de trabalho.</span>
+                </li>
+              </ul>
             </div>
 
-            {/* Menu Tabs */}
-            <div className="bg-[#06080D] px-4 border-b border-white/5 flex flex-wrap gap-2">
-              <button 
-                onClick={() => setActiveTab('dashboard')}
-                className={`py-3.5 px-4 font-mono text-xs uppercase font-bold tracking-wider border-b-2 transition-all focus:outline-none ${activeTab === 'dashboard' ? 'border-emerald-500 text-emerald-400' : 'border-transparent text-gray-400 hover:text-white'}`}
-              >
-                Dashboard
-              </button>
-              <button 
-                onClick={() => setActiveTab('acessos')}
-                className={`py-3.5 px-4 font-mono text-xs uppercase font-bold tracking-wider border-b-2 transition-all focus:outline-none ${activeTab === 'acessos' ? 'border-emerald-500 text-emerald-400' : 'border-transparent text-gray-400 hover:text-white'}`}
-              >
-                Acessos Bloqueados
-              </button>
-              <button 
-                onClick={() => setActiveTab('diretorios')}
-                className={`py-3.5 px-4 font-mono text-xs uppercase font-bold tracking-wider border-b-2 transition-all focus:outline-none ${activeTab === 'diretorios' ? 'border-emerald-500 text-emerald-400' : 'border-transparent text-gray-400 hover:text-white'}`}
-              >
-                Diretórios Protegidos
-              </button>
-              <button 
-                onClick={() => setActiveTab('sistema')}
-                className={`py-3.5 px-4 font-mono text-xs uppercase font-bold tracking-wider border-b-2 transition-all focus:outline-none ${activeTab === 'sistema' ? 'border-emerald-500 text-emerald-400' : 'border-transparent text-gray-400 hover:text-white'}`}
-              >
-                Bloqueios do Sistema & Web
-              </button>
-              <button 
-                onClick={() => setActiveTab('computadores')}
-                className={`py-3.5 px-4 font-mono text-xs uppercase font-bold tracking-wider border-b-2 transition-all focus:outline-none ${activeTab === 'computadores' ? 'border-emerald-500 text-emerald-400' : 'border-transparent text-gray-400 hover:text-white'}`}
-              >
-                Computadores Ativos
-              </button>
+            {/* Controle */}
+            <div className="p-8 rounded-3xl bg-[#080d10] border border-emerald-500/20 space-y-6 shadow-xl shadow-emerald-950/5 relative">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/5 rounded-full blur-2xl"></div>
+              <div className="flex items-center gap-3 text-emerald-400">
+                <UserCheck size={28} />
+                <h3 className="text-xl font-bold text-white">Com Sentinela Security</h3>
+              </div>
+              <ul className="space-y-4 text-sm text-gray-300">
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 size={18} className="text-emerald-400 mt-0.5 flex-shrink-0" />
+                  <span><strong>Políticas de USB Rígidas:</strong> Bloqueio total ou permissões em nível de leitura para mídias externas.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 size={18} className="text-emerald-400 mt-0.5 flex-shrink-0" />
+                  <span><strong>Sistema Operacional Blindado:</strong> Acesso negado ao CMD, Powershell, Registro e Painel de Controle.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 size={18} className="text-emerald-400 mt-0.5 flex-shrink-0" />
+                  <span><strong>Proteção de Pastas Críticas:</strong> Blindagem local contra criptografia de ransomwares em diretórios confidenciais.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 size={18} className="text-emerald-400 mt-0.5 flex-shrink-0" />
+                  <span><strong>Filtro de Rede Avançado:</strong> Controle dinâmico de navegação web com listas negras, listas brancas e palavras-chave.</span>
+                </li>
+              </ul>
             </div>
+          </div>
+        </div>
+      </section>
 
-            {/* Tab Contents */}
-            <div className="p-8 min-h-[380px]">
-              
-              {/* TAB 1: DASHBOARD */}
-              {activeTab === 'dashboard' && (
-                <div className="space-y-8 animate-in fade-in duration-300">
-                  {/* Grid Cards */}
-                  <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div className="bg-[#05070B] border border-white/5 p-5 rounded-xl hover:border-emerald-500/20 transition-all group">
-                      <div className="flex items-center justify-between mb-4">
-                        <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Acessos Bloqueados</span>
-                        <AlertTriangle size={16} className="text-red-500" />
-                      </div>
-                      <div className="text-3xl font-black text-white mb-2">
-                        144 <span className="text-xs bg-red-950/40 text-red-400 px-1.5 py-0.5 rounded font-mono ml-2">HOJE</span>
-                      </div>
-                      <p className="text-[11px] text-gray-400 leading-snug">Histórico acumulado de tentativas travadas nas estações.</p>
-                      <button onClick={() => setActiveTab('acessos')} className="mt-4 text-[10px] text-emerald-400 hover:underline flex items-center gap-1 font-mono uppercase font-bold">
-                        Ir para Painel de Acessos <ChevronRight size={12} />
-                      </button>
-                    </div>
-
-                    <div className="bg-[#05070B] border border-white/5 p-5 rounded-xl hover:border-emerald-500/20 transition-all group">
-                      <div className="flex items-center justify-between mb-4">
-                        <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Diretórios Protegidos</span>
-                        <FolderLock size={16} className="text-blue-500" />
-                      </div>
-                      <div className="text-3xl font-black text-white mb-2">
-                        7 <span className="text-xs bg-blue-950/40 text-blue-400 px-1.5 py-0.5 rounded font-mono ml-2">ATIVOS</span>
-                      </div>
-                      <p className="text-[11px] text-gray-400 leading-snug">Pastas bloqueadas nos discos locais NTFS e Linux Ext4.</p>
-                      <button onClick={() => setActiveTab('diretorios')} className="mt-4 text-[10px] text-emerald-400 hover:underline flex items-center gap-1 font-mono uppercase font-bold">
-                        Ir para Diretórios <ChevronRight size={12} />
-                      </button>
-                    </div>
-
-                    <div className="bg-[#05070B] border border-white/5 p-5 rounded-xl hover:border-emerald-500/20 transition-all group">
-                      <div className="flex items-center justify-between mb-4">
-                        <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Proteção USB</span>
-                        <Usb size={16} className="text-yellow-500" />
-                      </div>
-                      <div className="text-3xl font-black text-white mb-2 flex items-center gap-2">
-                        <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                        <span className="text-emerald-400 text-lg uppercase tracking-wider font-bold">Bloqueio Ativo</span>
-                      </div>
-                      <p className="text-[11px] text-gray-400 leading-snug">Estado global do driver de armazenamento removível USB.</p>
-                      <button onClick={() => setActiveTab('sistema')} className="mt-4 text-[10px] text-emerald-400 hover:underline flex items-center gap-1 font-mono uppercase font-bold">
-                        Ir para Bloqueios Globais <ChevronRight size={12} />
-                      </button>
-                    </div>
-
-                    <div className="bg-[#05070B] border border-white/5 p-5 rounded-xl hover:border-emerald-500/20 transition-all group">
-                      <div className="flex items-center justify-between mb-4">
-                        <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Computadores Ativos</span>
-                        <Laptop size={16} className="text-emerald-500" />
-                      </div>
-                      <div className="text-3xl font-black text-white mb-2">
-                        2 / 2 <span className="text-xs bg-emerald-950/40 text-emerald-400 px-1.5 py-0.5 rounded font-mono ml-2">CONECTADOS</span>
-                      </div>
-                      <p className="text-[11px] text-gray-400 leading-snug">Estações Windows/Linux com agente reportando pulso.</p>
-                      <button onClick={() => setActiveTab('computadores')} className="mt-4 text-[10px] text-emerald-400 hover:underline flex items-center gap-1 font-mono uppercase font-bold">
-                        Ir para Computadores <ChevronRight size={12} />
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Sentinela Info Alert */}
-                  <div className="bg-[#070A0F] border border-emerald-500/20 rounded-xl p-6 flex flex-col md:flex-row md:items-start gap-4 text-left">
-                    <div className="p-3 bg-emerald-500/10 rounded-xl text-emerald-400"><CheckCircle2 size={24} /></div>
-                    <div className="space-y-2">
-                      <h4 className="font-mono text-sm font-bold text-white uppercase tracking-wider">Sentinela Ativo & Monitorando</h4>
-                      <p className="text-xs text-gray-400 leading-relaxed">
-                        Bem-vindo ao console central do Sentinela. O sistema de proteção de endpoints está operando em regime de alta disponibilidade (99.9% SLA). Os daemons locais estão sincronizados e as políticas administrativas de bloqueio de USB, configurações, pastas, redes sociais, pornografia e apostas estão ativas. Use as abas do topo para gerenciar cada aspecto de maneira organizada.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* TAB 2: ACESSOS BLOQUEADOS */}
-              {activeTab === 'acessos' && (
-                <div className="space-y-6 text-left animate-in fade-in duration-300">
-                  <div className="flex items-center justify-between border-b border-white/5 pb-4">
-                    <div>
-                      <h3 className="font-mono text-sm font-bold text-white uppercase tracking-wider">Painel de Monitoramento de Acessos Bloqueados</h3>
-                      <p className="text-[11px] text-gray-500">Acompanhe e audite tentativas de violação de políticas de segurança em tempo real.</p>
-                    </div>
-                    <span className="text-[10px] bg-red-500/10 border border-red-500/25 text-red-400 px-2.5 py-1 rounded font-mono font-bold uppercase">26 Eventos Recentes</span>
-                  </div>
-
-                  <div className="space-y-3 font-mono text-xs max-h-[250px] overflow-y-auto pr-2">
-                    <div className="bg-[#05070B] border-l-4 border-yellow-500 p-3 rounded flex items-center justify-between">
-                      <div>
-                        <span className="text-yellow-400 font-bold">[POLICY_CHANGE]</span> <span className="text-gray-300">Bypass temporário expirado. Políticas reativadas.</span>
-                        <div className="text-[10px] text-gray-500 mt-1">Estação: CESAR-INSTALACAO • Usuário: SF-TI • IP: 192.168.18.38</div>
-                      </div>
-                      <span className="text-gray-500 text-[10px]">17/07/2026, 13:51:29</span>
-                    </div>
-
-                    <div className="bg-[#05070B] border-l-4 border-blue-500 p-3 rounded flex items-center justify-between">
-                      <div>
-                        <span className="text-blue-400 font-bold">[ADMIN_BYPASS]</span> <span className="text-gray-300">Bypass local ativado via código PIN na estação.</span>
-                        <div className="text-[10px] text-gray-500 mt-1">Estação: CESAR-INSTALACAO • Usuário: SF-TI • IP: 192.168.18.38</div>
-                      </div>
-                      <span className="text-gray-500 text-[10px]">17/07/2026, 13:21:29</span>
-                    </div>
-
-                    <div className="bg-[#05070B] border-l-4 border-red-500 p-3 rounded flex items-center justify-between">
-                      <div>
-                        <span className="text-red-400 font-bold">[SETTINGS_BLOCK]</span> <span className="text-gray-300">Tentativa de alteração do Painel de Configurações bloqueada.</span>
-                        <div className="text-[10px] text-gray-500 mt-1">Estação: CESAR-INSTALACAO • Usuário: SF-TI • IP: 192.168.18.38</div>
-                      </div>
-                      <span className="text-gray-500 text-[10px]">17/07/2026, 13:20:45</span>
-                    </div>
-
-                    <div className="bg-[#05070B] border-l-4 border-red-500 p-3 rounded flex items-center justify-between">
-                      <div>
-                        <span className="text-red-400 font-bold">[USB_MOUNT_ATTEMPT]</span> <span className="text-gray-300">Dispositivo USB removível (Kingston DataTraveler) montagem negada.</span>
-                        <div className="text-[10px] text-gray-500 mt-1">Estação: DESKTOP-G9d3DAV • Usuário: USER • IP: 192.168.98.42</div>
-                      </div>
-                      <span className="text-gray-500 text-[10px]">17/07/2026, 13:09:07</span>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* TAB 3: DIRETÓRIOS PROTEGIDOS */}
-              {activeTab === 'diretorios' && (
-                <div className="space-y-6 text-left animate-in fade-in duration-300">
-                  <div>
-                    <h3 className="font-mono text-sm font-bold text-white uppercase tracking-wider">Pastas, Arquivos e Diretórios Protegidos</h3>
-                    <p className="text-[11px] text-gray-500">Proteja pastas confidenciais corporativas nos discos rígidos contra roubo, vazamento manual ou sequestro (Ransomware).</p>
-                  </div>
-
-                  <div className="grid md:grid-cols-2 gap-6">
-                    {/* Regras Ativas */}
-                    <div className="space-y-3">
-                      <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Diretrizes em Execução (Ativas: 7)</span>
-                      
-                      <div className="bg-[#05070B] border border-white/5 p-3 rounded-lg flex items-center justify-between text-xs">
-                        <div>
-                          <div className="font-mono font-bold text-white">Chaves Privadas SSH (Anti-Lateral)</div>
-                          <div className="text-[10px] text-gray-500 font-mono">~/.ssh/</div>
-                        </div>
-                        <span className="bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded font-mono text-[9px] font-bold uppercase">Bloqueio Total</span>
-                      </div>
-
-                      <div className="bg-[#05070B] border border-white/5 p-3 rounded-lg flex items-center justify-between text-xs">
-                        <div>
-                          <div className="font-mono font-bold text-white">Arquivo Hosts (DNS Windows)</div>
-                          <div className="text-[10px] text-gray-500 font-mono">C:\Windows\System32\drivers\etc\hosts</div>
-                        </div>
-                        <span className="bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded font-mono text-[9px] font-bold uppercase">Bloqueio Escrita</span>
-                      </div>
-
-                      <div className="bg-[#05070B] border border-white/5 p-3 rounded-lg flex items-center justify-between text-xs">
-                        <div>
-                          <div className="font-mono font-bold text-white">Base SAM do Registro</div>
-                          <div className="text-[10px] text-gray-500 font-mono">C:\Windows\System32\config\SAM</div>
-                        </div>
-                        <span className="bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded font-mono text-[9px] font-bold uppercase">Bloqueio Leitura</span>
-                      </div>
-                    </div>
-
-                    {/* Criar Nova Regra */}
-                    <div className="bg-[#05070B] border border-white/5 p-5 rounded-xl space-y-4">
-                      <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest block border-b border-white/5 pb-2">Criar Nova Diretriz de Bloqueio</span>
-                      <div className="space-y-3 text-xs">
-                        <div>
-                          <label className="text-[10px] text-gray-400 font-bold block mb-1">Nome Identificador</label>
-                          <input type="text" placeholder="Ex: Pasta Contabilidade Fiscal" className="w-full bg-[#0a0d13] border border-white/10 rounded p-2 text-white focus:outline-none" disabled />
-                        </div>
-                        <div>
-                          <label className="text-[10px] text-gray-400 font-bold block mb-1">Caminho Absoluto Local (NTFS / EXT4)</label>
-                          <input type="text" placeholder="Ex: C:\Financeiro\FolhasDePagamento" className="w-full bg-[#0a0d13] border border-white/10 rounded p-2 text-white focus:outline-none" disabled />
-                        </div>
-                        <button className="w-full bg-emerald-600/50 text-emerald-400 border border-emerald-500/30 rounded p-2 font-mono font-bold uppercase hover:bg-emerald-600 transition-colors mt-2" disabled>
-                          + Salvar Nova Diretriz
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* TAB 4: BLOQUEIOS DO SISTEMA & WEB */}
-              {activeTab === 'sistema' && (
-                <div className="space-y-6 text-left animate-in fade-in duration-300">
-                  <div className="grid md:grid-cols-2 gap-8">
-                    {/* Restrições do PC */}
-                    <div className="space-y-4">
-                      <h4 className="font-mono text-sm font-bold text-white uppercase tracking-wider border-b border-white/5 pb-2">Bloqueios de Sistema</h4>
-                      
-                      <div className="flex items-center justify-between bg-[#05070B] p-4 rounded-xl border border-white/5">
-                        <div>
-                          <div className="font-semibold text-white text-xs">Bloqueio Geral de Driver USB</div>
-                          <p className="text-[10px] text-gray-500 mt-0.5">Desativa a montagem de pendrives e discos removíveis locais.</p>
-                        </div>
-                        <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/25 px-2 py-0.5 rounded font-mono text-[10px] font-bold">ATIVO</span>
-                      </div>
-
-                      <div className="flex items-center justify-between bg-[#05070B] p-4 rounded-xl border border-white/5">
-                        <div>
-                          <div className="font-semibold text-white text-xs">Bloquear Configurações do PC</div>
-                          <p className="text-[10px] text-gray-500 mt-0.5">Bloqueia Painel de Controle, app de configurações, CMD e redes.</p>
-                        </div>
-                        <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/25 px-2 py-0.5 rounded font-mono text-[10px] font-bold">ATIVO</span>
-                      </div>
-
-                      <div className="flex items-center justify-between bg-[#05070B] p-4 rounded-xl border border-white/5">
-                        <div>
-                          <div className="font-semibold text-white text-xs">PIN Admin de Emergência</div>
-                          <p className="text-[10px] text-gray-500 mt-0.5">Permite desativação local temporária sob manutenção de TI.</p>
-                        </div>
-                        <span className="bg-gray-800 text-emerald-400 px-2 py-0.5 rounded font-mono text-[10px] font-bold tracking-wider">1310</span>
-                      </div>
-                    </div>
-
-                    {/* Filtro Web */}
-                    <div className="space-y-4">
-                      <h4 className="font-mono text-sm font-bold text-white uppercase tracking-wider border-b border-white/5 pb-2">Filtro de Conteúdo Web</h4>
-                      
-                      <div className="flex items-center justify-between bg-[#05070B] p-4 rounded-xl border border-white/5">
-                        <div>
-                          <div className="font-semibold text-white text-xs">Filtro de Redes Sociais</div>
-                          <p className="text-[10px] text-gray-500 mt-0.5">Bloqueia acesso a Facebook, Instagram, TikTok e Twitter.</p>
-                        </div>
-                        <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/25 px-2 py-0.5 rounded font-mono text-[10px] font-bold">ATIVO</span>
-                      </div>
-
-                      <div className="flex items-center justify-between bg-[#05070B] p-4 rounded-xl border border-white/5">
-                        <div>
-                          <div className="font-semibold text-white text-xs">Bloqueio de Adultos & Cassinos</div>
-                          <p className="text-[10px] text-gray-500 mt-0.5">Bloqueia sites pornô e plataformas de apostas online.</p>
-                        </div>
-                        <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/25 px-2 py-0.5 rounded font-mono text-[10px] font-bold">ATIVO</span>
-                      </div>
-
-                      <div className="bg-[#05070B] p-4 rounded-xl border border-white/5 space-y-2">
-                        <div className="font-semibold text-white text-xs">Lista Branca de Sites Permitidos</div>
-                        <div className="flex flex-wrap gap-1.5 text-[9px] font-mono">
-                          <span className="bg-gray-800 text-gray-300 px-1.5 py-0.5 rounded">github.com</span>
-                          <span className="bg-gray-800 text-gray-300 px-1.5 py-0.5 rounded">google.com</span>
-                          <span className="bg-gray-800 text-gray-300 px-1.5 py-0.5 rounded">linkedin.com</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* TAB 5: COMPUTADORES ATIVOS */}
-              {activeTab === 'computadores' && (
-                <div className="space-y-6 text-left animate-in fade-in duration-300">
-                  <div>
-                    <h3 className="font-mono text-sm font-bold text-white uppercase tracking-wider">Computadores Monitorados na Rede Corporativa</h3>
-                    <p className="text-[11px] text-gray-500">Estações de trabalho com o daemon local do Sentinela reportando pulso.</p>
-                  </div>
-
-                  <div className="bg-[#05070B] border border-white/5 rounded-xl overflow-hidden text-xs">
-                    <table className="w-full text-left font-mono">
-                      <thead>
-                        <tr className="bg-[#0a0d14] border-b border-white/5 text-gray-400 text-[10px] uppercase font-bold">
-                          <th className="p-4">Hostname</th>
-                          <th className="p-4">S.O.</th>
-                          <th className="p-4">Endereço IP</th>
-                          <th className="p-4">Usuário Ativo</th>
-                          <th className="p-4">Último Sinal</th>
-                          <th className="p-4">Status Proteção</th>
-                        </tr>
-                      </thead>
-                      <tbody className="divide-y divide-white/5">
-                        <tr>
-                          <td className="p-4 font-bold text-white">DESKTOP-G9d3DAV</td>
-                          <td className="p-4"><span className="bg-blue-500/10 text-blue-400 px-1.5 py-0.5 rounded text-[10px]">WINDOWS</span></td>
-                          <td className="p-4 text-gray-300">192.168.98.42</td>
-                          <td className="p-4 text-gray-400">USER</td>
-                          <td className="p-4 text-gray-400">Há 5s</td>
-                          <td className="p-4"><span className="text-emerald-400 font-bold flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> CONECTADO</span></td>
-                        </tr>
-                        <tr>
-                          <td className="p-4 font-bold text-white">Cesar-Instalacao</td>
-                          <td className="p-4"><span className="bg-blue-500/10 text-blue-400 px-1.5 py-0.5 rounded text-[10px]">WINDOWS</span></td>
-                          <td className="p-4 text-gray-300">192.168.18.38</td>
-                          <td className="p-4 text-gray-400">Instalacao</td>
-                          <td className="p-4 text-gray-400">Há 12s</td>
-                          <td className="p-4"><span className="text-emerald-400 font-bold flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> CONECTADO</span></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              )}
-
+      {/* Detailed Features Showcase (Zig-Zag presentation) */}
+      <section className="py-24 bg-[#05070B] space-y-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          {/* Item 1: USB Block */}
+          <div className="flex flex-col lg:flex-row items-center gap-16">
+            <div className="flex-1 space-y-6 text-left">
+              <div className="w-12 h-12 bg-emerald-950/20 text-emerald-400 rounded-2xl flex items-center justify-center border border-emerald-500/10">
+                <Usb size={22} />
+              </div>
+              <h3 className="text-3xl font-black text-white tracking-tight">Bloqueio Geral de Driver USB</h3>
+              <p className="text-gray-400 leading-relaxed font-light">
+                Evite contaminações por malware e roubo de dados. O Sentinela Security desativa a inicialização e montagem automática de qualquer driver de armazenamento em massa (pendrives, HDs externos, cartões de memória) diretamente no sistema operacional.
+              </p>
+              <ul className="space-y-3 text-sm text-gray-300">
+                <li className="flex items-center gap-2.5">
+                  <CheckCircle2 size={16} className="text-emerald-400" />
+                  Bloqueio ativo em nível de driver local.
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <CheckCircle2 size={16} className="text-emerald-400" />
+                  Opção de liberação apenas em modo Leitura (Read-Only).
+                </li>
+              </ul>
+            </div>
+            <div className="flex-1 w-full max-w-lg relative bg-[#090b10] border border-white/5 p-8 rounded-3xl">
+              <div className="absolute inset-0 bg-emerald-500/5 blur-3xl rounded-full"></div>
+              <div className="relative font-mono text-xs text-left text-gray-400 space-y-2 bg-[#05070A] p-6 rounded-xl border border-white/10 shadow-2xl">
+                <div className="text-emerald-400 font-bold">[USB_DRIVER_DETECTOR]</div>
+                <div className="text-red-400">ALERT: Dispositivo USB não autorizado conectado (VID: 0930, PID: 6545)</div>
+                <div className="text-gray-500">Status: Dispositivo desmontado e acesso bloqueado instantaneamente.</div>
+              </div>
             </div>
           </div>
 
-          {/* Interactive Agent Simulator Section */}
-          <div className="mt-16 bg-[#080B10] border border-white/10 rounded-2xl p-8 max-w-5xl mx-auto text-left space-y-6">
-            <div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-purple-500/10 border border-purple-500/20 text-purple-400 font-mono text-[10px] font-bold uppercase mb-2">
-                Simulador do Agente Local (Daemon)
+          {/* Item 2: OS Configuration Lock */}
+          <div className="flex flex-col lg:flex-row-reverse items-center gap-16 pt-16">
+            <div className="flex-1 space-y-6 text-left">
+              <div className="w-12 h-12 bg-emerald-950/20 text-emerald-400 rounded-2xl flex items-center justify-center border border-emerald-500/10">
+                <Terminal size={22} />
               </div>
-              <h3 className="text-xl font-bold text-white">Simular Comportamento no Computador do Usuário</h3>
-              <p className="text-xs text-gray-400 max-w-2xl font-light">
-                Com o agente local instalado, teste abaixo o que acontece se o usuário final tentar burlar a segurança corporativa:
+              <h3 className="text-3xl font-black text-white tracking-tight">Bloqueio de Configurações do PC</h3>
+              <p className="text-gray-400 leading-relaxed font-light">
+                Mantenha os endpoints da empresa padronizados e seguros. O agente local impede que os colaboradores abram ferramentas restritas que possam comprometer as políticas de segurança ou as configurações de rede locais.
               </p>
+              <ul className="space-y-3 text-sm text-gray-300">
+                <li className="flex items-center gap-2.5">
+                  <CheckCircle2 size={16} className="text-emerald-400" />
+                  Bloqueia Painel de Controle, CMD e Powershell.
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <CheckCircle2 size={16} className="text-emerald-400" />
+                  Evita modificações de IP, DNS e desativação de antivírus.
+                </li>
+              </ul>
             </div>
-
-            <div className="grid md:grid-cols-2 gap-8 items-start">
-              {/* Simulator Actions */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <button 
-                  onClick={() => triggerSimulation('usb', 'Conexão de pendrive contendo vírus no drive D:/')}
-                  className="bg-[#05070B] border border-white/5 hover:border-emerald-500 p-4 rounded-xl text-left space-y-2 group transition-all"
-                >
-                  <div className="w-10 h-10 bg-emerald-950/30 text-emerald-400 rounded-lg flex items-center justify-center border border-emerald-500/20"><Usb size={20} /></div>
-                  <div className="text-xs font-bold text-white">Inserir Pendrive</div>
-                  <p className="text-[10px] text-gray-500">Tenta montar um dispositivo USB removível local.</p>
-                </button>
-
-                <button 
-                  onClick={() => triggerSimulation('config', 'Abertura do Painel de Controle e CMD')}
-                  className="bg-[#05070B] border border-white/5 hover:border-emerald-500 p-4 rounded-xl text-left space-y-2 group transition-all"
-                >
-                  <div className="w-10 h-10 bg-emerald-950/30 text-emerald-400 rounded-lg flex items-center justify-center border border-emerald-500/20"><Terminal size={20} /></div>
-                  <div className="text-xs font-bold text-white">Abrir CMD ou Painel</div>
-                  <p className="text-[10px] text-gray-500">Tenta abrir configurações restritas do sistema.</p>
-                </button>
-
-                <button 
-                  onClick={() => triggerSimulation('folder', 'Acesso à pasta confidenciais SSH ~/.ssh/')}
-                  className="bg-[#05070B] border border-white/5 hover:border-emerald-500 p-4 rounded-xl text-left space-y-2 group transition-all"
-                >
-                  <div className="w-10 h-10 bg-emerald-950/30 text-emerald-400 rounded-lg flex items-center justify-center border border-emerald-500/20"><FolderLock size={20} /></div>
-                  <div className="text-xs font-bold text-white">Acessar Pasta Bloqueada</div>
-                  <p className="text-[10px] text-gray-500">Tenta ler ou modificar diretórios protegidos por kernel.</p>
-                </button>
-
-                <button 
-                  onClick={() => triggerSimulation('web', 'Acesso a site de apostas bet365.com')}
-                  className="bg-[#05070B] border border-white/5 hover:border-emerald-500 p-4 rounded-xl text-left space-y-2 group transition-all"
-                >
-                  <div className="w-10 h-10 bg-emerald-950/30 text-emerald-400 rounded-lg flex items-center justify-center border border-emerald-500/20"><Globe size={20} /></div>
-                  <div className="text-xs font-bold text-white">Acessar Site de Apostas</div>
-                  <p className="text-[10px] text-gray-500">Tenta carregar domínios restritos no navegador.</p>
-                </button>
-              </div>
-
-              {/* Simulator Execution Terminal */}
-              <div className="bg-[#05070B] border border-white/10 rounded-xl p-5 font-mono text-[11px] text-gray-300 space-y-3 relative">
-                <div className="flex items-center justify-between border-b border-white/5 pb-2.5 text-gray-500">
-                  <span className="flex items-center gap-1.5"><Terminal size={12} /> terminal_de_execucao_local</span>
-                  {isSimulating && <RefreshCw size={12} className="animate-spin text-emerald-400" />}
-                </div>
-
-                <div className="space-y-2 max-h-[160px] overflow-y-auto">
-                  {simulationLog.map((log, idx) => (
-                    <div key={idx} className={`leading-relaxed ${log.includes('detectada') ? 'text-yellow-500' : log.includes('Bloqueio') ? 'text-red-400' : 'text-gray-400'}`}>
-                      {log}
-                    </div>
-                  ))}
-                  <div className="text-emerald-500">[Agent] Daemon Sentinela ativo e escutando novas políticas do painel...</div>
-                  {consoleLog.map((log, idx) => (
-                    <div key={idx} className="text-gray-500">{log}</div>
-                  ))}
-                </div>
+            <div className="flex-1 w-full max-w-lg relative bg-[#090b10] border border-white/5 p-8 rounded-3xl">
+              <div className="absolute inset-0 bg-emerald-500/5 blur-3xl rounded-full"></div>
+              <div className="relative font-mono text-xs text-left text-gray-400 space-y-2 bg-[#05070A] p-6 rounded-xl border border-white/10 shadow-2xl">
+                <div className="text-emerald-400 font-bold">[OS_PROTECTION_DAEMON]</div>
+                <div className="text-red-400">ALERT: Tentativa de execução de 'cmd.exe' detectada.</div>
+                <div className="text-gray-500">Status: Processo finalizado com código de segurança 0x0F (Bloqueado).</div>
               </div>
             </div>
+          </div>
 
+          {/* Item 3: Protected Folders */}
+          <div className="flex flex-col lg:flex-row items-center gap-16 pt-16">
+            <div className="flex-1 space-y-6 text-left">
+              <div className="w-12 h-12 bg-emerald-950/20 text-emerald-400 rounded-2xl flex items-center justify-center border border-emerald-500/10">
+                <FolderLock size={22} />
+              </div>
+              <h3 className="text-3xl font-black text-white tracking-tight">Pastas e Arquivos Protegidos</h3>
+              <p className="text-gray-400 leading-relaxed font-light">
+                Defina diretórios locais imutáveis. O Sentinela cria um escudo protetor sobre pastas contendo planilhas de faturamento, chaves SSH, arquivos hosts ou pastas críticas de bancos de dados. Qualquer alteração ou tentativa de criptografia de arquivos (Ransomware) é frustrada imediatamente.
+              </p>
+              <ul className="space-y-3 text-sm text-gray-300">
+                <li className="flex items-center gap-2.5">
+                  <CheckCircle2 size={16} className="text-emerald-400" />
+                  Blindagem contra remoção ou alteração de pastas críticas.
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <CheckCircle2 size={16} className="text-emerald-400" />
+                  Ideal para isolamento de arquivos sensíveis do sistema.
+                </li>
+              </ul>
+            </div>
+            <div className="flex-1 w-full max-w-lg relative bg-[#090b10] border border-white/5 p-8 rounded-3xl">
+              <div className="absolute inset-0 bg-emerald-500/5 blur-3xl rounded-full"></div>
+              <div className="relative font-mono text-xs text-left text-gray-400 space-y-2 bg-[#05070A] p-6 rounded-xl border border-white/10 shadow-2xl">
+                <div className="text-emerald-400 font-bold">[FILE_SHIELD_DAEMON]</div>
+                <div className="text-red-400">ALERT: Tentativa de modificação em 'C:\Windows\System32\drivers\etc\hosts'</div>
+                <div className="text-gray-500">Status: Ação de gravação negada. Integridade do arquivo mantida.</div>
+              </div>
+            </div>
           </div>
 
         </div>
       </section>
 
-      {/* Security Features Catalog Section */}
-      <section className="py-32 bg-[#05070B]">
+      {/* Security Features Catalog Section (Cards Grid) */}
+      <section className="py-32 bg-[#07090E] border-t border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-20">
           
           <div className="max-w-2xl mx-auto space-y-4">
@@ -619,7 +317,7 @@ export const SentinelaPage: React.FC = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, idx) => (
-              <div key={idx} className="p-8 bg-[#07090E] border border-white/5 rounded-3xl hover:bg-[#090D14] hover:border-emerald-500/20 transition-all duration-300 text-left space-y-4 group">
+              <div key={idx} className="p-8 bg-[#090B10] border border-white/5 rounded-3xl hover:bg-[#0c0f16] hover:border-emerald-500/20 transition-all duration-300 text-left space-y-4 group">
                 <div className="w-12 h-12 bg-emerald-950/20 text-emerald-400 rounded-2xl flex items-center justify-center border border-emerald-500/10 group-hover:scale-110 transition-transform duration-300">
                   {feature.icon}
                 </div>
@@ -633,13 +331,13 @@ export const SentinelaPage: React.FC = () => {
       </section>
 
       {/* Installation Manuals Section */}
-      <section id="manual-instalacao" className="py-24 bg-[#07090E] border-t border-white/5">
+      <section id="manual-instalacao" className="py-24 bg-[#05070B] border-t border-white/5">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-left space-y-12">
           
           <div className="space-y-4">
             <h2 className="text-3xl font-black text-white">Manuais de Instalação</h2>
             <p className="text-gray-400 text-sm font-light">
-              O Sentinela Security é composto por um instalador silencioso para os computadores corporativos (clientes) e por este painel web central para gerenciamento de políticas.
+              O Sentinela Security é composto por um instalador silencioso para os computadores corporativos (clientes) e por um painel web central para gerenciamento de políticas.
             </p>
           </div>
 
@@ -689,7 +387,7 @@ export const SentinelaPage: React.FC = () => {
       </section>
 
       {/* CTA Final - Teste Grátis de 15 Dias */}
-      <section className="py-24 bg-[#05070B]">
+      <section className="py-24 bg-[#07090D] border-t border-white/5">
         <div className="max-w-4xl mx-auto px-4">
           <div className="bg-gradient-to-tr from-[#081510] via-[#05070B] to-[#05070B] border border-emerald-500/20 rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden shadow-2xl group">
             

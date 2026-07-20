@@ -169,14 +169,6 @@ export const Navbar: React.FC = () => {
                 </button>
               </div>
 
-              <div className="flex items-center gap-2 pr-4 border-r border-gray-100">
-                <Logo app="sentinela" className="w-5 h-5" />
-                <button onClick={() => navigate('/sentinela')} className="text-[10px] font-bold text-gray-400 hover:text-brand-600 uppercase tracking-tighter text-left leading-tight">
-                  Já é cliente Sentinela?<br />
-                  <span className="text-brand-600">Clique aqui</span>
-                </button>
-              </div>
-
               <div className="flex items-center gap-3">
                 <Button size="sm" onClick={() => navigate('/cadastro')}>
                   Teste 15 dias grátis
