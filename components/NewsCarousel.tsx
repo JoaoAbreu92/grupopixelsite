@@ -8,38 +8,43 @@
 */
 
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, Zap, Star, Shield, Smartphone } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 // --- CONFIGURAÇÃO DOS SLIDES ---
 const slides = [
   {
     id: 1,
-    imageUrl: "/images/floki_new.png",
+    imageUrl: "/images/banner_apps_v2.png",
     title: "",
     description: "",
     icon: null,
-    color: "bg-[#0c0c0c]" // Cor de fundo para combinar com o Floki
+    color: "bg-white", // Fundo branco perfeito para harmonizar com o banner de Apps e Softwares
+    link: "/web-applications"
   },
   {
     id: 2,
-    imageUrl: "/images/pandanet_new.png",
+    imageUrl: "/images/banner_pandanet_v2.png",
     title: "",
     description: "",
     icon: null,
-    color: "bg-[#0a0f1e]" // Cor de fundo para combinar com PandaNet
+    color: "bg-black", // Fundo preto para harmonizar com o PandaNet
+    link: "/pandanet"
   },
   {
     id: 3,
-    imageUrl: "/images/grupopixel_new.png",
+    imageUrl: "/images/banner_sites_v2.png",
     title: "",
     description: "",
     icon: null,
-    color: "bg-[#111111]" // Cor de fundo para combinar com GrupoPixel
+    color: "bg-black", // Fundo preto para harmonizar com Sites Personalizados
+    link: "/sites-modernos"
   },
 ];
 
 export const NewsCarousel: React.FC = () => {
   const [current, setCurrent] = useState(0);
+  const navigate = useNavigate();
 
   // Avançar automaticamente a cada 5 segundos
   useEffect(() => {
@@ -58,11 +63,16 @@ export const NewsCarousel: React.FC = () => {
   };
 
   return (
-    <div className="w-full bg-white py-[10px]">
-      <div className="w-full px-[10px]">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Novidades Grupopixel</h2>
+    <div className="w-full bg-white py-6 md:py-8">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center tracking-tight">
+          Novidades Grupopixel
+        </h2>
 
-        <div className="relative w-full h-64 md:h-[420px] lg:h-[520px] overflow-hidden rounded-2xl shadow-2xl group bg-gray-100">
+        <div
+          className="relative w-full aspect-[3/1] max-h-[350px] overflow-hidden rounded-2xl shadow-xl group bg-gray-900 border border-gray-100"
+          style={{ aspectRatio: '3 / 1' }}
+        >
 
           {/* Slides */}
           {slides.map((slide, index) => (
@@ -76,11 +86,16 @@ export const NewsCarousel: React.FC = () => {
 
               {slide.imageUrl ? (
                 // --- MODO IMAGEM ---
-                <div className="w-full h-full relative">
+                <div
+                  className={`w-full h-full relative ${slide.link ? 'cursor-pointer' : ''}`}
+                  onClick={() => slide.link && navigate(slide.link)}
+                >
                   <img
                     src={slide.imageUrl}
-                    alt={slide.title}
-                    className="w-full h-full object-contain"
+                    alt={slide.title || "Banner GrupoPixel"}
+                    className="w-full h-full object-contain select-none"
+                    loading="eager"
+                    decoding="async"
                   />
                   {/* Overlay Escuro para leitura do texto (Só aparece se tiver texto) */}
                   {(slide.title || slide.description) && (
@@ -123,25 +138,29 @@ export const NewsCarousel: React.FC = () => {
           {/* Botões de Navegação */}
           <button
             onClick={prevSlide}
-            className="absolute z-30 left-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full backdrop-blur-sm transition-colors border border-white/10"
+            aria-label="Slide anterior"
+            className="absolute z-30 left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white p-1.5 sm:p-2 rounded-full backdrop-blur-sm transition-all border border-white/15 hover:scale-105 shadow-md"
           >
-            <ChevronLeft size={24} />
+            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
           <button
             onClick={nextSlide}
-            className="absolute z-30 right-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full backdrop-blur-sm transition-colors border border-white/10"
+            aria-label="Próximo slide"
+            className="absolute z-30 right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white p-1.5 sm:p-2 rounded-full backdrop-blur-sm transition-all border border-white/15 hover:scale-105 shadow-md"
           >
-            <ChevronRight size={24} />
+            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
 
           {/* Indicadores (Dots) */}
-          <div className="absolute z-30 bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
+          <div className="absolute z-30 bottom-2.5 sm:bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
             {slides.map((_, index) => (
               <button
                 key={index}
+                aria-label={`Ir para o slide ${index + 1}`}
                 onClick={() => setCurrent(index)}
-                className={`h-2 rounded-full transition-all duration-300 shadow-sm ${index === current ? 'bg-white w-8' : 'bg-white/50 w-2 hover:bg-white/80'
-                  }`}
+                className={`h-2 rounded-full transition-all duration-300 shadow-sm ${
+                  index === current ? 'bg-white w-7 sm:w-8' : 'bg-white/50 w-2 hover:bg-white/80'
+                }`}
               />
             ))}
           </div>

@@ -124,8 +124,8 @@ const FlokiPage = () => {
 // Nova Página Inicial - Focada em Grupopixel Tecnologia e Serviços
 const HomePage = () => (
   <>
-    {/* Carrossel de Novidades no Topo (Ticker) */}
-    <NewsCarousel />
+    {/* Carrossel de Novidades no Topo (Comentado temporariamente) */}
+    {/* <NewsCarousel /> */}
 
     {/* Hero Section Tecnológica Grupopixel */}
     <GrupopixelHero />
