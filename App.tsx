@@ -171,6 +171,15 @@ const HomePage = () => (
             />
             <span className="text-[10px] font-bold text-gray-400 group-hover:text-brand-600 uppercase tracking-tighter">CORDEL COM AÇAÍ</span>
           </a>
+
+          <a href="https://acinfaz.com.br/" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center gap-4 transition-transform hover:scale-105 duration-300">
+            <img
+              src="/acinfaz-logo.png"
+              alt="ACINFAZ"
+              className="w-20 h-20 md:w-28 md:h-28 rounded-3xl grayscale group-hover:grayscale-0 transition-all opacity-60 group-hover:opacity-100 object-contain shadow-md bg-white p-3"
+            />
+            <span className="text-[10px] font-bold text-gray-400 group-hover:text-brand-600 uppercase tracking-tighter">ACINFAZ</span>
+          </a>
         </div>
       </div>
     </div>
